@@ -25,39 +25,28 @@
 //  THE SOFTWARE.
 //
 
+#import <OptimizelySDKiOS/OptimizelySDKiOS.h>
 #import "AppDelegate.h"
 #import "CheckoutViewController.h"
-#import "OptimizelySDKiOS.h"
-
-@interface AppDelegate ()
-@property(nonatomic, strong, readwrite) OPTLYClient *client;
-@property(nonatomic, strong, readwrite) NSString *userId;
-@end
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     
-    // [OPTLY - Doc] For E2E testing purposes we inject the userId and projectId via NSUserDefaults
-    self.userId = [[NSUserDefaults standardUserDefaults] stringForKey:@"optlyUserId"];
-    if (!self.userId) {
-        self.userId = @"";
-    }
-    
-    NSString *projectId = [[NSUserDefaults standardUserDefaults] stringForKey:@"optlyProjectId"];
-    if (!projectId) {
-        projectId = @"";
-    }
-    
-    // [OPTLY - Doc] Initialize the Optimizely Manager and Optimizely Client (async)
-    OPTLYManager *optlyManager = [OPTLYManager initWithBuilderBlock:^(OPTLYManagerBuilder * _Nullable builder) {
-        builder.projectId = projectId;
-        builder.logger = [[OPTLYLoggerDefault alloc] initWithLogLevel:OptimizelyLogLevelAll];
+    // ---- Initialize Optimizely ----
+    self.optlyManager = [OPTLYManager init:^(OPTLYManagerBuilder * _Nullable builder) {
+        
+        builder.projectId = @"8174444717";
+        
     }];
-    [optlyManager initializeClientWithCallback:^(NSError * _Nullable error, OPTLYClient * _Nullable client) {
-        self.client = client;
+    
+    [self.optlyManager initializeWithCallback:^(NSError * _Nullable error, OPTLYClient * _Nullable client) {
+        
+        OPTLYVariation *variation = [client activate:@"ColorThemeExperiment" userId:@"alda" attributes:@{@"buyerType":@"frequent"}];
+        
+        NSLog(@"*********** User was bucketed into %@ variation. ***********", variation.variationKey);
     }];
+    
     return YES;
 }
 
@@ -89,5 +78,20 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+//@"8174444717";
+//
+//self.optlyManager = [OPTLYManager init:^(OPTLYManagerBuilder * _Nullable builder) {
+//    builder.projectId = @"8174444717";
+//    // Custom Logger
+//    builder.logger = [[OPTLYLoggerNoOp alloc] initWithLogLevel:OptimizelyLogLevelDebug];
+//    // Custom Error Handler
+//    builder.errorHandler = [OPTLYErrorHandlerDefault new];
+//    // Custom Event Dispatcher
+//    builder.eventDispatcher = [OPTLYEventDispatcherNoOp new];
+//    // Custom User Profile
+//    builder.userProfile = [OPTLYUserProfileNoOp new];
+//    // Custom Datafile Manager
+//    builder.datafileManager = [OPTLYDatafileManagerNoOp new];
+//}];
 
 @end

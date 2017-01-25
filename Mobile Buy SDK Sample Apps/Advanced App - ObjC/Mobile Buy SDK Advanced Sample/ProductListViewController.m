@@ -32,6 +32,7 @@
 #import "ProductViewControllerThemeStyleTableViewCell.h"
 #import "ProductViewControllerThemeTintColorTableViewCell.h"
 #import "AppDelegate.h"
+#import "OptimizelySDKiOS.h"
 
 #import <Buy/Buy.h>
 
@@ -86,25 +87,25 @@
     [self.tableView registerClass:[ProductViewControllerToggleTableViewCell class] forCellReuseIdentifier:@"ProductViewControllerPresentViewControllerToggleCell"];
     
     self.themeTintColors = @[[UIColor colorWithRed:0.48f green:0.71f blue:0.36f alpha:1.0f], [UIColor colorWithRed:0.88 green:0.06 blue:0.05 alpha:1], [UIColor colorWithRed:0.02 green:0.54 blue:1 alpha:1]];
-    self.themeTintColorSelectedIndex = 0;
+    
+    AppDelegate *appDelegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
+    OPTLYClient *client = [appDelegate.optlyManager getOptimizely];
+    
+    NSString *themeColor = [client variableString:@"themeColor"
+                                           userId:@"alda"];
+    
+    
+    NSLog(@"*********** Theme color is: %@. ***********", themeColor);
+    
+    self.themeTintColorSelectedIndex = [self themeColorSelection:themeColor];
     self.showsProductImageBackground = YES;
-    self.presentViewController = YES;
+    self.presentViewController = NO;
     
     if (self.collection) {
         // If we're presenting with a collection, add the ability to sort
         UIBarButtonItem *sortBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sort" style:UIBarButtonItemStylePlain target:self action:@selector(presentCollectionSortOptions:)];
         self.navigationItem.rightBarButtonItem = sortBarButtonItem;
-        
-        // [OPTLY - Doc] Determine whether we should sort the collection items by name or price based on the bucketed variation
-        AppDelegate *appDelegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
-        OPTLYVariation *var = [appDelegate.client activateExperiment:@"product_sorting_logic" userId:appDelegate.userId];
-        if([var.variationKey isEqualToString:@"sort_by_price"]){
-            [self getCollectionWithSortOrder:BUYCollectionSortPriceDescending];
-        } else if([var.variationKey isEqualToString:@"sort_by_name"]){
-            [self getCollectionWithSortOrder:BUYCollectionSortTitleAscending];
-        } else {
-            [self getCollectionWithSortOrder:BUYCollectionSortCollectionDefault];
-        }
+        [self getCollectionWithSortOrder:BUYCollectionSortCollectionDefault];
     } else {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
         [self.client getProductsPage:1 completion:^(NSArray *products, NSUInteger page, BOOL reachedEnd, NSError *error) {
@@ -118,6 +119,18 @@
                 NSLog(@"Error fetching products: %@", error);
             }
         }];
+    }
+}
+
+- (NSInteger)themeColorSelection:(NSString *)themeColor {
+    if ([themeColor isEqualToString:@"green"]) {
+        return 0;
+    } else if ([themeColor isEqualToString:@"red"]) {
+        return 1;
+    } else if ([themeColor isEqualToString:@"blue"]) {
+        return 2;
+    } else {
+        return 0;
     }
 }
 
@@ -151,12 +164,12 @@
     }]];
     
     /*  Note: The BUYCollectionSortCreatedAscending and BUYCollectionSortCreatedDescending are currently not support
-    [alertController addAction:[UIAlertAction actionWithTitle:@"BUYCollectionSortCreatedAscending" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self getCollectionWithSortOrder:BUYCollectionSortCreatedAscending];
-    }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"BUYCollectionSortCreatedDescending" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self getCollectionWithSortOrder:BUYCollectionSortCreatedDescending];
-    }]];
+     [alertController addAction:[UIAlertAction actionWithTitle:@"BUYCollectionSortCreatedAscending" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+     [self getCollectionWithSortOrder:BUYCollectionSortCreatedAscending];
+     }]];
+     [alertController addAction:[UIAlertAction actionWithTitle:@"BUYCollectionSortCreatedDescending" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+     [self getCollectionWithSortOrder:BUYCollectionSortCreatedDescending];
+     }]];
      */
     
     if (self.traitCollection.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
@@ -189,20 +202,20 @@
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
+            /* case 0:
+             if (self.demoProductViewController) {
+             return 5;
+             } else {
+             return 1;
+             }
+             break;*/
         case 0:
-            if (self.demoProductViewController) {
-                return 5;
-            } else {
-                return 1;
-            }
-            break;
-        case 1:
             return self.products.count;
         default:
             return 0;
@@ -215,58 +228,56 @@
     UITableViewCell *cell;
     
     switch (indexPath.section) {
-        case 0:
-            switch (indexPath.row) {
-                case 0: {
-                    ProductViewControllerToggleTableViewCell *toggleCell = (ProductViewControllerToggleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ProductViewControllerToggleCell" forIndexPath:indexPath];
-                    toggleCell.textLabel.text = @"Demo BUYProductViewController";
-                    toggleCell.accessibilityIdentifier = @"product_view_toggle_cell";
-                    [toggleCell.toggleSwitch setOn:self.demoProductViewController];
-                    [toggleCell.toggleSwitch addTarget:self action:@selector(toggleProductViewControllerDemo:) forControlEvents:UIControlEventValueChanged];
-                    cell = toggleCell;
-                }
-                    break;
-                case 1: {
-                    ProductViewControllerThemeStyleTableViewCell *themeCell = (ProductViewControllerThemeStyleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ThemeStyleCell" forIndexPath:indexPath];
-                    themeCell.segmentedControl.selectedSegmentIndex = self.themeStyle;
-                    [themeCell.segmentedControl addTarget:self action:@selector(toggleProductViewControllerThemeStyle:) forControlEvents:UIControlEventValueChanged];
-                    cell = themeCell;
-                }
-                    break;
-                case 2: {
-                    ProductViewControllerThemeTintColorTableViewCell *themeCell = (ProductViewControllerThemeTintColorTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ThemeTintColorCell" forIndexPath:indexPath];
-                    themeCell.segmentedControl.selectedSegmentIndex = self.themeTintColorSelectedIndex;
-                    [themeCell.segmentedControl addTarget:self action:@selector(toggleProductViewControllerTintColorSelection:) forControlEvents:UIControlEventValueChanged];
-                    cell = themeCell;
-                }
-                    break;
-                case 3: {
-                    ProductViewControllerToggleTableViewCell *toggleCell = (ProductViewControllerToggleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ThemeShowsBackgroundToggleCell" forIndexPath:indexPath];
-                    toggleCell.textLabel.text = @"Product Image in Background";
-                    [toggleCell.toggleSwitch setOn:self.showsProductImageBackground];
-                    [toggleCell.toggleSwitch addTarget:self action:@selector(toggleShowsProductImageBackground:) forControlEvents:UIControlEventValueChanged];
-                    cell = toggleCell;
-                }
-                    break;
-                case 4: {
-                    ProductViewControllerToggleTableViewCell *toggleCell = (ProductViewControllerToggleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ProductViewControllerPresentViewControllerToggleCell" forIndexPath:indexPath];
-                    toggleCell.textLabel.text = @"Modal Presentation";
-                    [toggleCell.toggleSwitch setOn:self.presentViewController];
-                    [toggleCell.toggleSwitch addTarget:self action:@selector(togglePresentViewController:) forControlEvents:UIControlEventValueChanged];
-                    cell = toggleCell;
-                    
-                }
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case 1: {
+            /*case 0:
+             switch (indexPath.row) {
+             case 0: {
+             ProductViewControllerToggleTableViewCell *toggleCell = (ProductViewControllerToggleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ProductViewControllerToggleCell" forIndexPath:indexPath];
+             toggleCell.textLabel.text = @"Demo BUYProductViewController";
+             [toggleCell.toggleSwitch setOn:self.demoProductViewController];
+             [toggleCell.toggleSwitch addTarget:self action:@selector(toggleProductViewControllerDemo:) forControlEvents:UIControlEventValueChanged];
+             cell = toggleCell;
+             }
+             break;
+             case 1: {
+             ProductViewControllerThemeStyleTableViewCell *themeCell = (ProductViewControllerThemeStyleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ThemeStyleCell" forIndexPath:indexPath];
+             themeCell.segmentedControl.selectedSegmentIndex = self.themeStyle;
+             [themeCell.segmentedControl addTarget:self action:@selector(toggleProductViewControllerThemeStyle:) forControlEvents:UIControlEventValueChanged];
+             cell = themeCell;
+             }
+             break;
+             case 2: {
+             ProductViewControllerThemeTintColorTableViewCell *themeCell = (ProductViewControllerThemeTintColorTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ThemeTintColorCell" forIndexPath:indexPath];
+             themeCell.segmentedControl.selectedSegmentIndex = self.themeTintColorSelectedIndex;
+             [themeCell.segmentedControl addTarget:self action:@selector(toggleProductViewControllerTintColorSelection:) forControlEvents:UIControlEventValueChanged];
+             cell = themeCell;
+             }
+             break;
+             case 3: {
+             ProductViewControllerToggleTableViewCell *toggleCell = (ProductViewControllerToggleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ThemeShowsBackgroundToggleCell" forIndexPath:indexPath];
+             toggleCell.textLabel.text = @"Product Image in Background";
+             [toggleCell.toggleSwitch setOn:self.showsProductImageBackground];
+             [toggleCell.toggleSwitch addTarget:self action:@selector(toggleShowsProductImageBackground:) forControlEvents:UIControlEventValueChanged];
+             cell = toggleCell;
+             }
+             break;
+             case 4: {
+             ProductViewControllerToggleTableViewCell *toggleCell = (ProductViewControllerToggleTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ProductViewControllerPresentViewControllerToggleCell" forIndexPath:indexPath];
+             toggleCell.textLabel.text = @"Modal Presentation";
+             [toggleCell.toggleSwitch setOn:self.presentViewController];
+             [toggleCell.toggleSwitch addTarget:self action:@selector(togglePresentViewController:) forControlEvents:UIControlEventValueChanged];
+             cell = toggleCell;
+             
+             }
+             break;
+             default:
+             break;
+             }
+             break;*/
+        case 0: {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             BUYProduct *product = self.products[indexPath.row];
             cell.textLabel.text = product.title;
-            cell.accessibilityIdentifier = [NSString stringWithFormat:@"product_list_item_%ld", indexPath.row];
         }
             break;
             
@@ -279,19 +290,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section > 0) {
-        // [OPTLY - Doc] Track a conversion event
-        AppDelegate *appDelegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
-        [appDelegate.client trackEvent:@"product_click" userId:appDelegate.userId];
-        
-        BUYProduct *product = self.products[indexPath.row];
-        if (self.demoProductViewController) {
-            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-            [self demoProductViewControllerWithProduct:product];
-        } else {
-            [self demoNativeFlowWithProduct:product];
-        }
-    }
+    //if (indexPath.section > 0) {
+    BUYProduct *product = self.products[indexPath.row];
+    [self demoProductViewControllerWithProduct:product];
+    /*
+     if (self.demoProductViewController) {
+     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+     [self demoProductViewControllerWithProduct:product];
+     } else {
+     [self demoNativeFlowWithProduct:product];
+     }*/
+    // }
 }
 
 - (void)demoNativeFlowWithProduct:(BUYProduct*)product
@@ -429,4 +438,8 @@
     }
 }
 
+//    NSString *themeColor = [client variableString:@"themeColor"
+//                                           userId:@"alda"
+//                                       attributes:@{@"buyerType":@"frequent"}
+//                               activateExperiment:NO];
 @end
