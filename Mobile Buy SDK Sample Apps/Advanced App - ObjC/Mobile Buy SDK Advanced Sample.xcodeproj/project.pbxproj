@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D4FB54A3865823CB5BF02B3 /* Pods_Mobile_Buy_SDK_Advanced_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DFE5C42B336D6C79429877 /* Pods_Mobile_Buy_SDK_Advanced_Sample.framework */; };
 		842799661CB31498003AD0CE /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842799651CB31498003AD0CE /* PaymentViewController.m */; };
 		847612671CAB047600AB17AA /* DisclosureIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847612251CAB047600AB17AA /* DisclosureIndicatorView.m */; };
 		847612681CAB047600AB17AA /* Theme+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 847612271CAB047600AB17AA /* Theme+Additions.m */; };
@@ -42,9 +41,10 @@
 		847612981CAB059100AB17AA /* UIImage+PaymentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 847612951CAB059100AB17AA /* UIImage+PaymentButton.m */; };
 		847612A11CAB05BE00AB17AA /* UIFont+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8476129D1CAB05BE00AB17AA /* UIFont+Additions.m */; };
 		847612A21CAB05BE00AB17AA /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8476129F1CAB05BE00AB17AA /* UIImage+Additions.m */; };
-		84A772431D81A2640018D4F5 /* ReferenceProxy in Frameworks */ = {isa = PBXBuildFile; fileRef = BE34379D1BC5C18400C71330 /* Buy.framework */; };
-		84A772441D81A2640018D4F5 /* ReferenceProxy in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE34379D1BC5C18400C71330 /* Buy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84A772431D81A2640018D4F5 /* Buy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE34379D1BC5C18400C71330 /* Buy.framework */; };
+		84A772441D81A2640018D4F5 /* Buy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE34379D1BC5C18400C71330 /* Buy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84BA52EE1CB2E83C00AB1560 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA52ED1CB2E83C00AB1560 /* NavigationController.m */; };
+		90117D46B73CC8D8A8A12778 /* Pods_Mobile_Buy_SDK_Advanced_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DFE5C42B336D6C79429877 /* Pods_Mobile_Buy_SDK_Advanced_Sample.framework */; };
 		902C9B8F1BB0729F00FC456E /* ShippingRateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 902C9B8E1BB0729F00FC456E /* ShippingRateTableViewCell.m */; };
 		902C9B921BB08FF500FC456E /* SummaryItemsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 902C9B911BB08FF500FC456E /* SummaryItemsTableViewCell.m */; };
 		9079F5F41BB1AAA100CB1B35 /* CollectionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9079F5F31BB1AAA100CB1B35 /* CollectionListViewController.m */; };
@@ -63,6 +63,7 @@
 		BE8B82951B8E65D700E3F871 /* PreCheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8B82941B8E65D700E3F871 /* PreCheckoutViewController.m */; };
 		BE8B829A1B8E72CC00E3F871 /* CheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8B82991B8E72CC00E3F871 /* CheckoutViewController.m */; };
 		BE948D4D1B95087A009AB20B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE948D4C1B95087A009AB20B /* Images.xcassets */; };
+		EA18E9781E67856200FF112A /* Pods_Mobile_Buy_SDK_Advanced_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA18E9771E67856200FF112A /* Pods_Mobile_Buy_SDK_Advanced_Sample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +111,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				84A772441D81A2640018D4F5 /* ReferenceProxy in Embed Frameworks */,
+				84A772441D81A2640018D4F5 /* Buy.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +233,7 @@
 		BE8B82981B8E72CC00E3F871 /* CheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CheckoutViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		BE8B82991B8E72CC00E3F871 /* CheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutViewController.m; sourceTree = "<group>"; };
 		BE948D4C1B95087A009AB20B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EA18E9771E67856200FF112A /* Pods_Mobile_Buy_SDK_Advanced_Sample.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Mobile_Buy_SDK_Advanced_Sample.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/Mobile_Buy_SDK_Advanced_Sample-buqybntjetvftwddeoputwdzlpyp/Build/Products/Debug-iphonesimulator/Pods_Mobile_Buy_SDK_Advanced_Sample.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,9 +241,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA18E9781E67856200FF112A /* Pods_Mobile_Buy_SDK_Advanced_Sample.framework in Frameworks */,
 				90A6F42D1BA8BCAC003E7C4F /* PassKit.framework in Frameworks */,
-				84A772431D81A2640018D4F5 /* ReferenceProxy in Frameworks */,
-				7D4FB54A3865823CB5BF02B3 /* Pods_Mobile_Buy_SDK_Advanced_Sample.framework in Frameworks */,
+				84A772431D81A2640018D4F5 /* Buy.framework in Frameworks */,
+				90117D46B73CC8D8A8A12778 /* Pods_Mobile_Buy_SDK_Advanced_Sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +254,7 @@
 		4F147547D275FCACBC557DEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA18E9771E67856200FF112A /* Pods_Mobile_Buy_SDK_Advanced_Sample.framework */,
 				B5AE0F541DF88E3C0069B1D0 /* libFMDB.a */,
 				B5AE0F551DF88E3C0069B1D0 /* libOptimizelySDKDatafileManager.a */,
 				B5AE0F561DF88E3C0069B1D0 /* libOptimizelySDKEventDispatcher.a */,
@@ -514,11 +518,12 @@
 		BE8B82431B8CF49D00E3F871 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Shopify;
 				TargetAttributes = {
 					BE8B824A1B8CF49D00E3F871 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = BDMC9C2X5M;
 						SystemCapabilities = {
 							com.apple.OMC = {
 								enabled = 1;
@@ -739,8 +744,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -766,6 +773,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -783,8 +791,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -802,6 +812,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -816,22 +827,16 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = BDMC9C2X5M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${PROJECT_DIR}/../**",
 				);
 				INFOPLIST_FILE = "Mobile Buy SDK Advanced Sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/FMDB",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/OptimizelySDKDatafileManager",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/OptimizelySDKEventDispatcher",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/OptimizelySDKShared",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/OptimizelySDKUserProfile",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shopify.$(PRODUCT_NAME:rfc1034identifier)";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.optimizely.Mobile-Buy-SDK-Advanced-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -847,22 +852,16 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = BDMC9C2X5M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${PROJECT_DIR}/../**",
 				);
 				INFOPLIST_FILE = "Mobile Buy SDK Advanced Sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/FMDB",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/OptimizelySDKDatafileManager",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/OptimizelySDKEventDispatcher",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/OptimizelySDKShared",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/OptimizelySDKUserProfile",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shopify.$(PRODUCT_NAME:rfc1034identifier)";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.optimizely.Mobile-Buy-SDK-Advanced-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

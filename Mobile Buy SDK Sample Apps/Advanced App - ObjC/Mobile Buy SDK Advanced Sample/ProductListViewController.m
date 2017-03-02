@@ -32,7 +32,6 @@
 #import "ProductViewControllerThemeStyleTableViewCell.h"
 #import "ProductViewControllerThemeTintColorTableViewCell.h"
 #import "AppDelegate.h"
-#import "OptimizelySDKiOS.h"
 
 #import <Buy/Buy.h>
 
@@ -88,16 +87,7 @@
     
     self.themeTintColors = @[[UIColor colorWithRed:0.48f green:0.71f blue:0.36f alpha:1.0f], [UIColor colorWithRed:0.88 green:0.06 blue:0.05 alpha:1], [UIColor colorWithRed:0.02 green:0.54 blue:1 alpha:1]];
     
-    AppDelegate *appDelegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
-    OPTLYClient *client = [appDelegate.optlyManager getOptimizely];
-    
-    NSString *themeColor = [client variableString:@"themeColor"
-                                           userId:@"alda"];
-    
-    
-    NSLog(@"*********** Theme color is: %@. ***********", themeColor);
-    
-    self.themeTintColorSelectedIndex = [self themeColorSelection:themeColor];
+    self.themeTintColorSelectedIndex = [self themeColorSelection:nil];
     self.showsProductImageBackground = YES;
     self.presentViewController = NO;
     

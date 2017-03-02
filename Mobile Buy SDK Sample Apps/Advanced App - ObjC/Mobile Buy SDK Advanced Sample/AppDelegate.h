@@ -24,13 +24,11 @@
 //  THE SOFTWARE.
 //
 
-#import <OptimizelySDKiOS/OptimizelySDKiOS.h>
 @import UIKit;
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property(nonatomic, strong, readwrite) OPTLYManager *optlyManager;
 @end
 

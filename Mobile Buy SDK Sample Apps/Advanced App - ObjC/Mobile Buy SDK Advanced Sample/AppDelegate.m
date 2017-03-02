@@ -25,28 +25,16 @@
 //  THE SOFTWARE.
 //
 
-#import <OptimizelySDKiOS/OptimizelySDKiOS.h>
+#import <Optimizely/Optimizely.h>
 #import "AppDelegate.h"
 #import "CheckoutViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    // ---- Initialize Optimizely ----
-    self.optlyManager = [OPTLYManager init:^(OPTLYManagerBuilder * _Nullable builder) {
-        
-        builder.projectId = @"8174444717";
-        
-    }];
-    
-    [self.optlyManager initializeWithCallback:^(NSError * _Nullable error, OPTLYClient * _Nullable client) {
-        
-        OPTLYVariation *variation = [client activate:@"ColorThemeExperiment" userId:@"alda" attributes:@{@"buyerType":@"frequent"}];
-        
-        NSLog(@"*********** User was bucketed into %@ variation. ***********", variation.variationKey);
-    }];
-    
+    [Optimizely sharedInstance].verboseLogging = YES;
+    [Optimizely startOptimizelyWithAPIToken:@""
+                              launchOptions:launchOptions];
     return YES;
 }
 
@@ -78,20 +66,5 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-//@"8174444717";
-//
-//self.optlyManager = [OPTLYManager init:^(OPTLYManagerBuilder * _Nullable builder) {
-//    builder.projectId = @"8174444717";
-//    // Custom Logger
-//    builder.logger = [[OPTLYLoggerNoOp alloc] initWithLogLevel:OptimizelyLogLevelDebug];
-//    // Custom Error Handler
-//    builder.errorHandler = [OPTLYErrorHandlerDefault new];
-//    // Custom Event Dispatcher
-//    builder.eventDispatcher = [OPTLYEventDispatcherNoOp new];
-//    // Custom User Profile
-//    builder.userProfile = [OPTLYUserProfileNoOp new];
-//    // Custom Datafile Manager
-//    builder.datafileManager = [OPTLYDatafileManagerNoOp new];
-//}];
 
 @end

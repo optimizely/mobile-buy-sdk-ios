@@ -30,7 +30,6 @@
 #import "CheckoutViewController.h"
 #import "SummaryItemsTableViewCell.h"
 #import "UIButton+PaymentButton.h"
-#import "OptimizelySDKiOS.h"
 
 NSString * const CheckoutCallbackNotification = @"CheckoutCallbackNotification";
 NSString * const MerchantId = @"";
