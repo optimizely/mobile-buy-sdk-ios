@@ -32,7 +32,6 @@
 #import "ProductViewControllerThemeStyleTableViewCell.h"
 #import "ProductViewControllerThemeTintColorTableViewCell.h"
 #import "AppDelegate.h"
-#import "OptimizelySDKiOS.h"
 
 #import <Buy/Buy.h>
 
