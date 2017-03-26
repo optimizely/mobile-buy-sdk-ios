@@ -6,4 +6,5 @@ target 'Mobile Buy SDK Advanced Sample' do
   use_frameworks!
 
   # Pods for Mobile Buy SDK Advanced Sample
+  pod 'JSONModel', '1.3.0'
 end

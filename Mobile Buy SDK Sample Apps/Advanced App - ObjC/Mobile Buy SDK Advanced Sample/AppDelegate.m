@@ -25,13 +25,18 @@
 //  THE SOFTWARE.
 //
 
-#import <OptimizelySDKiOSUniversal/OptimizelySDKiOSUniversal.h>
+#import <OptimizelySDKiOS/OptimizelySDKiOS.h>
 #import "AppDelegate.h"
 #import "CheckoutViewController.h"
+#import "TESTJSONModel.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    TESTJSONModel *testJSONModelObject = [TESTJSONModel new];
+    testJSONModelObject.modelID = @"abcd";
+    testJSONModelObject.modelKey = @"1234";
     
     // ---- Initialize Optimizely ----
     self.optlyManager = [OPTLYManager init:^(OPTLYManagerBuilder * _Nullable builder) {

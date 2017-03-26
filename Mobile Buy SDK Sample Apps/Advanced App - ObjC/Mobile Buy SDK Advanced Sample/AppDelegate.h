@@ -24,7 +24,7 @@
 //  THE SOFTWARE.
 //
 
-#import <OptimizelySDKiOSUniversal/OptimizelySDKiOSUniversal.h>
+#import <OptimizelySDKiOS/OptimizelySDKiOS.h>
 @import UIKit;
 
 

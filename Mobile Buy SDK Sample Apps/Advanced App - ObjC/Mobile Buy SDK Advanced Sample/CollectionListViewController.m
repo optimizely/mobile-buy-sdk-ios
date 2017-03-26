@@ -30,7 +30,7 @@
 
 #warning - Enter your shop domain and API Key
 #define SHOP_DOMAIN @"argyle-bliss.myshopify.com"
-#define API_KEY @""
+#define API_KEY @"65b258447094d0d9518679d0fd1cf0fd"
 #define APP_ID @"8"
 
 @interface CollectionListViewController ()
