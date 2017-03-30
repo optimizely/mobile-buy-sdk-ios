@@ -79,6 +79,8 @@
 		BE8B82951B8E65D700E3F871 /* PreCheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8B82941B8E65D700E3F871 /* PreCheckoutViewController.m */; };
 		BE8B829A1B8E72CC00E3F871 /* CheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8B82991B8E72CC00E3F871 /* CheckoutViewController.m */; };
 		BE948D4D1B95087A009AB20B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE948D4C1B95087A009AB20B /* Images.xcassets */; };
+		EA9FD3B61E8C904200D86791 /* OptimizelySDKiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9FD3B51E8C904200D86791 /* OptimizelySDKiOS.framework */; };
+		EA9FD3BB1E8C908C00D86791 /* OptimizelySDKiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA9FD3B51E8C904200D86791 /* OptimizelySDKiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +196,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				EA9FD3BB1E8C908C00D86791 /* OptimizelySDKiOS.framework in Embed Frameworks */,
 				84A772441D81A2640018D4F5 /* Buy.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -335,6 +338,7 @@
 		BE8B82981B8E72CC00E3F871 /* CheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CheckoutViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		BE8B82991B8E72CC00E3F871 /* CheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutViewController.m; sourceTree = "<group>"; };
 		BE948D4C1B95087A009AB20B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EA9FD3B51E8C904200D86791 /* OptimizelySDKiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OptimizelySDKiOS.framework; sourceTree = "<group>"; };
 		F265593A1A4F39A73C07C2D9 /* Pods_Mobile_Buy_SDK_Advanced_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mobile_Buy_SDK_Advanced_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -360,6 +364,7 @@
 			files = (
 				2D6E427A1E4A8C55008E328F /* Buy.framework in Frameworks */,
 				2E191B329B76A0B67B34EDBF /* Pods_Mobile_Buy_SDK_Advanced_Sample.framework in Frameworks */,
+				EA9FD3B61E8C904200D86791 /* OptimizelySDKiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +374,7 @@
 		4F147547D275FCACBC557DEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA9FD3B51E8C904200D86791 /* OptimizelySDKiOS.framework */,
 				2D6E42791E4A8C55008E328F /* Buy.framework */,
 				B5AE0F541DF88E3C0069B1D0 /* libFMDB.a */,
 				B5AE0F551DF88E3C0069B1D0 /* libOptimizelySDKDatafileManager.a */,
@@ -1219,6 +1225,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${PROJECT_DIR}/../**",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Mobile Buy SDK Advanced Sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1254,6 +1261,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${PROJECT_DIR}/../**",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Mobile Buy SDK Advanced Sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
