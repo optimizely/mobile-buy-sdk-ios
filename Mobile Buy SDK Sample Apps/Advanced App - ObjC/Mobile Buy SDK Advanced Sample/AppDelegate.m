@@ -36,7 +36,7 @@
     // ---- Initialize Optimizely ----
     self.optlyManager = [OPTLYManager init:^(OPTLYManagerBuilder * _Nullable builder) {
         
-        builder.projectId = @"8174444717";
+        builder.projectId = @"8174444717"; // iOS_Shopify_Demo project with mobile-test@optimizely.com account
         
     }];
     
