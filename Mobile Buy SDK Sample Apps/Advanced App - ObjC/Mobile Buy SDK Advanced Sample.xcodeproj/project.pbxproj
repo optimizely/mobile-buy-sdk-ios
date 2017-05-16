@@ -62,8 +62,8 @@
 		BE8B82951B8E65D700E3F871 /* PreCheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8B82941B8E65D700E3F871 /* PreCheckoutViewController.m */; };
 		BE8B829A1B8E72CC00E3F871 /* CheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8B82991B8E72CC00E3F871 /* CheckoutViewController.m */; };
 		BE948D4D1B95087A009AB20B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE948D4C1B95087A009AB20B /* Images.xcassets */; };
-		EAC32AF41EB008290002E88A /* OptimizelySDKiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC32AF21EB007510002E88A /* OptimizelySDKiOS.framework */; };
-		EAC32AF51EB008340002E88A /* OptimizelySDKiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAC32AF21EB007510002E88A /* OptimizelySDKiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EA8F053A1EB7F94E0013EFD2 /* OptimizelySDKiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA8F05391EB7F94E0013EFD2 /* OptimizelySDKiOS.framework */; };
+		EA8F05471EB801530013EFD2 /* OptimizelySDKiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA8F05391EB7F94E0013EFD2 /* OptimizelySDKiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,7 +112,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				84A772441D81A2640018D4F5 /* Buy.framework in Embed Frameworks */,
-				EAC32AF51EB008340002E88A /* OptimizelySDKiOS.framework in Embed Frameworks */,
+				EA8F05471EB801530013EFD2 /* OptimizelySDKiOS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,7 +224,7 @@
 		BE8B82981B8E72CC00E3F871 /* CheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CheckoutViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		BE8B82991B8E72CC00E3F871 /* CheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutViewController.m; sourceTree = "<group>"; };
 		BE948D4C1B95087A009AB20B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		EAC32AF21EB007510002E88A /* OptimizelySDKiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OptimizelySDKiOS.framework; sourceTree = "<group>"; };
+		EA8F05391EB7F94E0013EFD2 /* OptimizelySDKiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OptimizelySDKiOS.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,7 +234,7 @@
 			files = (
 				90A6F42D1BA8BCAC003E7C4F /* PassKit.framework in Frameworks */,
 				84A772431D81A2640018D4F5 /* Buy.framework in Frameworks */,
-				EAC32AF41EB008290002E88A /* OptimizelySDKiOS.framework in Frameworks */,
+				EA8F053A1EB7F94E0013EFD2 /* OptimizelySDKiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +244,7 @@
 		4F147547D275FCACBC557DEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EAC32AF21EB007510002E88A /* OptimizelySDKiOS.framework */,
+				EA8F05391EB7F94E0013EFD2 /* OptimizelySDKiOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
