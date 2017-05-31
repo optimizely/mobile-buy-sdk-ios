@@ -45,8 +45,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Collections";
+    AppDelegate *appDelegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
+    NSString *controllersCTAExperimentKey = [[NSUserDefaults standardUserDefaults] stringForKey:@"optlyControllersCtaExperimentKey"];
+    NSString *userAttributesString = [[NSUserDefaults standardUserDefaults] stringForKey:@"optlyUserAttributes"];
+    NSData *userAttributesData = [userAttributesString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *userAttributesDict = nil;
+    if (userAttributesData) {
+        userAttributesDict = [NSJSONSerialization JSONObjectWithData:userAttributesData options:nil error:nil];
+    }
+    OPTLYVariation *variation = [appDelegate.client variation:controllersCTAExperimentKey
+                                                       userId:appDelegate.userId
+                                                   attributes:userAttributesDict];
+    NSString *title = @"Collections Control";
+    if (variation) {
+        if ([variation.variationKey isEqualToString:@"control"]) {
+            // default text already set
+        } else if ([variation.variationKey isEqualToString:@"variation_a"]) {
+            title = @"Collections Variation A";
+        } else if ([variation.variationKey isEqualToString:@"variation_b"]) {
+            title = @"Collections Variation B";
+        }
+    }
     
+    self.navigationController.navigationBar.topItem.title = title;
+    self.navigationController.navigationBar.topItem.accessibilityValue = title;
+//    self.navigationController.navigationBar.topItem.titleView.accessibilityIdentifier = @"collections_table_view_title";
+    self.view.accessibilityIdentifier = @"collections_table_view_title";
+
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
     self.client = [[BUYClient alloc] initWithShopDomain:SHOP_DOMAIN
@@ -114,6 +139,7 @@
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
     NSNumber *productId = activity.userInfo[@"product"];
+    
     if (productId) {
         [self.client getProductById:productId completion:^(BUYProduct * _Nullable product, NSError * _Nullable error) {
             if (!error) {

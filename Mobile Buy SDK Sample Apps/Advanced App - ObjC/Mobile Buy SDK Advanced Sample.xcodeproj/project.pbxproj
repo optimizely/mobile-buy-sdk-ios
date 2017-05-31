@@ -314,7 +314,7 @@
 		B86CCAAA1DF9A2DA00F46EDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B86CCABC1DFAF39300F46EDE /* ProductRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductRowController.swift; sourceTree = "<group>"; };
 		B86CCAC91DFF39AC00F46EDE /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
-		B8784B741E0C200D00734909 /* Credentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Credentials.h; sourceTree = "<group>"; };
+		B8784B741E0C200D00734909 /* Credentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Credentials.h; path = "Mobile Buy SDK Advanced Sample/Credentials.h"; sourceTree = SOURCE_ROOT; };
 		B8784B791E0C215F00734909 /* Mobile Buy SDK Advanced Sample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mobile Buy SDK Advanced Sample-Bridging-Header.h"; sourceTree = "<group>"; };
 		B8DA1BC51E033F6100CE947E /* ApplePayHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePayHandler.swift; sourceTree = "<group>"; };
 		BE34378F1BC5C18400C71330 /* Mobile Buy SDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Mobile Buy SDK.xcodeproj"; path = "../../Mobile Buy SDK/Mobile Buy SDK.xcodeproj"; sourceTree = "<group>"; };
