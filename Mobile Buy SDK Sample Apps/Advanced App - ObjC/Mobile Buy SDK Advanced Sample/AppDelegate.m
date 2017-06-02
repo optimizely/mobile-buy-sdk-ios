@@ -76,7 +76,7 @@
         
     // --- Special initialization mode for the User Profile Service tests ----
     } else if ([initializationMode isEqualToString:@"sync_async_datafile"]) {
-        // Activate Synchronously with a Datafile
+        // Activate synchronously with a given datafile
         // The user profile should persist the variation in the saved datafile (include_fake_text)
         OPTLYManager *optlyManagerForSavedDatafile = [OPTLYManager init:^(OPTLYManagerBuilder * _Nullable builder) {
             builder.projectId = projectId;
@@ -89,8 +89,8 @@
         OPTLYClient *clientFromSavedDatafile = [optlyManagerForSavedDatafile initializeWithDatafile:data];
         OPTLYVariation *variationFromSavedDatafile = [clientFromSavedDatafile activate:self.experimentKey userId:self.userId];
         
-        // Activate Asynchronously
-        // Different datafile from remote should not changedthe bucketed value
+        // Activate asynchronously with a CDN Datafile
+        // Different datafile should not change the bucketed value
         OPTLYManager *optlyManagerForAsyncDatafile = [OPTLYManager init:^(OPTLYManagerBuilder * _Nullable builder) {
             builder.projectId = projectId;
             builder.logger = [[OPTLYLoggerDefault alloc] initWithLogLevel:OptimizelyLogLevelAll];
