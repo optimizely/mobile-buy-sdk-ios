@@ -282,6 +282,7 @@
 		9079F5F31BB1AAA100CB1B35 /* CollectionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionListViewController.m; sourceTree = "<group>"; };
 		9A0B0C851CEC8F370037D68F /* PaymentButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentButton.h; sourceTree = "<group>"; };
 		9A0B0C861CEC8F370037D68F /* PaymentButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentButton.m; sourceTree = "<group>"; };
+		A518229E1F1EA23F000BAE76 /* Credentials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Credentials.h; sourceTree = "<group>"; };
 		B2C560B31CEE36C00015AA40 /* ProductViewControllerThemeStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductViewControllerThemeStyleTableViewCell.h; path = "Product View/ProductViewControllerThemeStyleTableViewCell.h"; sourceTree = "<group>"; };
 		B2C560B41CEE36C00015AA40 /* ProductViewControllerThemeStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductViewControllerThemeStyleTableViewCell.m; path = "Product View/ProductViewControllerThemeStyleTableViewCell.m"; sourceTree = "<group>"; };
 		B2C560B51CEE36C00015AA40 /* ProductViewControllerThemeTintColorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductViewControllerThemeTintColorTableViewCell.h; path = "Product View/ProductViewControllerThemeTintColorTableViewCell.h"; sourceTree = "<group>"; };
@@ -614,6 +615,7 @@
 				BE8B82961B8E6A6900E3F871 /* View Controllers */,
 				B8784B741E0C200D00734909 /* Credentials.h */,
 				B8784B791E0C215F00734909 /* Mobile Buy SDK Advanced Sample-Bridging-Header.h */,
+				A518229E1F1EA23F000BAE76 /* Credentials.h */,
 			);
 			path = "Mobile Buy SDK Advanced Sample";
 			sourceTree = "<group>";
@@ -879,7 +881,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -26,12 +26,13 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>advancedsample</string>
+			<string>optimizelytestapp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>advancedsample</string>
+				<string>optimizelytestapp</string>
 			</array>
 		</dict>
+		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

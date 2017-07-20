@@ -33,6 +33,7 @@
 @property(nonatomic, strong, readwrite) OPTLYClient *client;
 @property(nonatomic, strong, readwrite) NSString *userId;
 @property(nonatomic, strong, readwrite) NSString *experimentKey;
+@property(nonatomic, strong, readwrite) NSString *route;
 @end
 
 @implementation AppDelegate
@@ -112,6 +113,44 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:CheckoutCallbackNotification object:nil userInfo:@{@"url": url}];
+    
+    NSMutableDictionary *queryStrings = [[NSMutableDictionary alloc] init];
+    for (NSString *qs in [url.query componentsSeparatedByString:@"&"]) {
+        // Get the parameter name
+        NSString *key = [[qs componentsSeparatedByString:@"="] objectAtIndex:0];
+        // Get the parameter value
+        NSString *value = [[qs componentsSeparatedByString:@"="] objectAtIndex:1];
+        value = [value stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+        value = [value stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        queryStrings[key] = value;
+    }
+    for (id key in queryStrings) {
+        NSLog(@"key: %@, value: %@ \n", key, [queryStrings objectForKey:key]);
+    }
+    NSString *url_str = url.absoluteString;
+    NSRange r1 = [url_str rangeOfString:@"//"];
+    NSRange r2 = [url_str rangeOfString:@"?"];
+    NSRange rSub = NSMakeRange(r1.location + r1.length, r2.location - r1.location - r1.length);
+    NSString *sub = [url_str substringWithRange:rSub];
+    
+    self.userId = queryStrings[@"user_id"];
+    self.experimentKey = queryStrings[@"experiment_key"];
+    self.route = sub;
+    
+    /*OPTLYManager *optlyManager = [OPTLYManager init:^(OPTLYManagerBuilder * _Nullable builder) {
+        builder.projectId = projectId;
+        builder.logger = [[OPTLYLoggerDefault alloc] initWithLogLevel:OptimizelyLogLevelAll];
+        builder.userProfileService = userProfileService;
+    }];
+    
+    NSString *string1 = @"activate";
+    if ([self.route compare:string1] == NSOrderedSame) {
+        [optlyManagerForAsyncDatafile initializeWithCallback:^(NSError * _Nullable error, OPTLYClient * _Nullable client) {
+            self.client = client;
+            OPTLYVariation *variation = [self.client activate:self.experimentKey userId:self.userId];
+        }];
+    }*/
     
     return YES;
 }

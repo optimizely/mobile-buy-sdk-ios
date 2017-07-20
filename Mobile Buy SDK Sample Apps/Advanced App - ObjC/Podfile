@@ -1,10 +1,15 @@
-# Uncomment this line to define a global platform for your project
-# platform :ios, '9.0'
+#Uncomment this line to define a global platform for your project
+platform :ios, '10.3'
 
 target 'Mobile Buy SDK Advanced Sample' do
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
   use_frameworks!
 
   # Pods for Mobile Buy SDK Advanced Sample
-  pod 'OptimizelySDKiOS'
+  pod 'OptimizelySDKiOS', :git => 'https://github.com/optimizely/objective-c-sdk.git', :branch => 'master'
+  pod 'OptimizelySDKDatafileManager', :git => 'https://github.com/optimizely/objective-c-sdk.git', :branch => 'master'
+  pod 'OptimizelySDKEventDispatcher', :git => 'https://github.com/optimizely/objective-c-sdk.git', :branch => 'master'
+  pod 'OptimizelySDKUserProfileService', :git => 'https://github.com/optimizely/objective-c-sdk.git', :branch => 'master'
+  pod 'OptimizelySDKShared', :git => 'https://github.com/optimizely/objective-c-sdk.git', :branch => 'master'
+  pod 'OptimizelySDKCore', :git => 'https://github.com/optimizely/objective-c-sdk.git', :branch => 'master'
 end
